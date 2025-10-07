@@ -1,0 +1,154 @@
+@model BookSearchSystem.Web.Models.SearchHistoryViewModel
+@{
+    ViewData["Title"] = "Historial de Búsquedas";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center mb-4 text-primary">
+                <i class="fas fa-history me-2"></i>
+                Historial de Búsquedas
+            </h1>
+        </div>
+    </div>
+
+    <!-- Navegación -->
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <a asp-action="Index" class="btn btn-primary btn-lg me-2">
+                <i class="fas fa-search me-2"></i>
+                Nueva Búsqueda
+            </a>
+        </div>
+    </div>
+
+    <!-- Historial -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-secondary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-list me-2"></i>
+                        Historial de Búsquedas Realizadas
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <!-- Mensaje informativo -->
+                    <div class="alert alert-info mb-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        @Model.Message
+                    </div>
+
+                    @if (Model.SearchHistories.Any())
+                    {
+                        <!-- Información de registros -->
+                        <div class="mb-3">
+                            <span class="badge bg-secondary fs-6">
+                                <i class="fas fa-database me-1"></i>
+                                @Model.TotalRecords registro(s) en el historial
+                            </span>
+                        </div>
+
+                        <!-- Tabla de historial -->
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th scope="col" class="text-center">#</th>
+                                        <th scope="col">
+                                            <i class="fas fa-user me-1"></i>
+                                            Autor Buscado
+                                        </th>
+                                        <th scope="col">
+                                            <i class="fas fa-calendar-alt me-1"></i>
+                                            Fecha de Búsqueda
+                                        </th>
+                                        <th scope="col" class="text-center">
+                                            <i class="fas fa-tools me-1"></i>
+                                            Acciones
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var history in Model.SearchHistories)
+                                    {
+                                        <tr>
+                                            <td class="text-center">
+                                                <span class="badge bg-primary">@history.Id</span>
+                                            </td>
+                                            <td class="fw-semibold text-primary">
+                                                <i class="fas fa-feather-alt me-1 text-muted"></i>
+                                                @history.AuthorSearched
+                                            </td>
+                                            <td>
+                                                <span class="badge bg-secondary">
+                                                    <i class="fas fa-clock me-1"></i>
+                                                    @history.FormattedSearchDate
+                                                </span>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="@Url.Action("SearchFromHistory", new { author = history.AuthorSearched })" 
+                                                   target="_blank" 
+                                                   class="btn btn-sm btn-outline-primary"
+                                                   title="Buscar nuevamente en nueva ventana">
+                                                    <i class="fas fa-external-link-alt me-1"></i>
+                                                    Buscar Nuevamente
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Información adicional -->
+                        <div class="mt-4">
+                            <div class="alert alert-light border">
+                                <h6 class="alert-heading">
+                                    <i class="fas fa-lightbulb me-2"></i>
+                                    Información:
+                                </h6>
+                                <ul class="mb-0 small">
+                                    <li>El historial muestra todas las búsquedas realizadas ordenadas por fecha más reciente.</li>
+                                    <li>Haz clic en "Buscar Nuevamente" para realizar la misma búsqueda en una nueva ventana.</li>
+                                    <li>Las búsquedas duplicadas en menos de 1 minuto no se registran en el historial.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- Estado vacío -->
+                        <div class="text-center py-5">
+                            <i class="fas fa-history fa-4x text-muted mb-3"></i>
+                            <h4 class="text-muted">No hay búsquedas en el historial</h4>
+                            <p class="text-muted mb-4">Realiza tu primera búsqueda para ver el historial aquí</p>
+                            <a asp-action="Index" class="btn btn-primary btn-lg">
+                                <i class="fas fa-search me-2"></i>
+                                Realizar Primera Búsqueda
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/book-search.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function() {
+            // Funcionalidades específicas de la página de historial
+            console.log('Página de historial cargada');
+            
+            // Resaltar filas al hacer hover con efecto especial
+            $('.table tbody tr').on('mouseenter', function() {
+                $(this).find('.badge').addClass('bg-warning');
+            }).on('mouseleave', function() {
+                $(this).find('.badge.bg-warning').removeClass('bg-warning').addClass('bg-primary');
+            });
+        });
+    </script>
+}

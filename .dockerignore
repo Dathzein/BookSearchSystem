@@ -1,0 +1,57 @@
+# ===== DOCKERIGNORE PARA SISTEMA DE BÚSQUEDA DE LIBROS =====
+
+# Directorios de build y output
+**/bin/
+**/obj/
+**/out/
+**/publish/
+
+# Archivos de Visual Studio
+**/.vs/
+**/.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de desarrollo
+**/.git/
+**/.gitignore
+**/README*.md
+**/Dockerfile*
+**/.dockerignore
+
+# Archivos de Node.js (si los hubiera)
+**/node_modules/
+**/npm-debug.log
+**/yarn-error.log
+
+# Archivos de sistema
+**/.DS_Store
+**/Thumbs.db
+
+# Archivos de logs
+**/logs/
+**/*.log
+
+# Archivos temporales
+**/tmp/
+**/temp/
+
+# Archivos de pruebas
+**/TestResults/
+**/*Tests/
+
+# Archivos de configuración local
+**/appsettings.Development.json
+**/appsettings.Local.json
+
+# Archivos de base de datos local
+**/*.db
+**/*.sqlite
+**/*.mdf
+**/*.ldf
+
+# Archivos de certificados
+**/*.pfx
+**/*.p12

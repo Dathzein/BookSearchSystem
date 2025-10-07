@@ -1,0 +1,277 @@
+/* ===== TEMA MORADO - SISTEMA DE BÚSQUEDA DE LIBROS ===== */
+
+/* Variables CSS para tema morado */
+:root {
+    --primary-purple: #6f42c1;
+    --primary-purple-dark: #5a359a;
+    --primary-purple-light: #8e6cc8;
+    --secondary-purple: #9d7bea;
+    --accent-purple: #b794f6;
+    --light-purple: #f3f0ff;
+    --gradient-purple: linear-gradient(135deg, #6f42c1 0%, #9d7bea 100%);
+}
+
+/* Configuración base */
+html {
+    font-size: 14px;
+    scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f8f9ff 0%, #f3f0ff 100%);
+    min-height: 100vh;
+}
+
+/* ===== COLORES PRIMARIOS PERSONALIZADOS ===== */
+.bg-primary {
+    background: var(--gradient-purple) !important;
+}
+
+.btn-primary {
+    background: var(--gradient-purple);
+    border: none;
+    box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a359a 0%, #8e6cc8 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(111, 66, 193, 0.4);
+}
+
+.btn-primary:focus, .btn-primary:active {
+    background: var(--primary-purple-dark);
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+}
+
+.text-primary {
+    color: var(--primary-purple) !important;
+}
+
+.border-primary {
+    border-color: var(--primary-purple) !important;
+}
+
+/* ===== CARDS Y COMPONENTES ===== */
+.search-card, .results-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.search-card:hover, .results-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(111, 66, 193, 0.2);
+}
+
+.card-header.bg-primary {
+    background: var(--gradient-purple) !important;
+    border: none;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== FORMULARIOS ===== */
+.form-control {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+    background-color: #fefefe;
+}
+
+.input-group-text {
+    border-radius: 10px 0 0 10px;
+    border: 2px solid #e9ecef;
+    border-right: none;
+    background: var(--light-purple);
+}
+
+.form-control:focus + .input-group-text,
+.input-group-text:has(+ .form-control:focus) {
+    border-color: var(--primary-purple);
+}
+
+/* ===== TABLAS ===== */
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.table-dark {
+    background: var(--gradient-purple);
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--light-purple);
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* ===== BADGES ===== */
+.badge.bg-primary {
+    background: var(--gradient-purple) !important;
+}
+
+.badge.bg-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #8e9196 100%) !important;
+}
+
+/* ===== ALERTAS ===== */
+.alert-info {
+    background: var(--light-purple);
+    border-color: var(--secondary-purple);
+    color: var(--primary-purple-dark);
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border-color: #28a745;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+    border-color: #ffc107;
+}
+
+/* ===== NAVEGACIÓN ===== */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+    color: var(--accent-purple) !important;
+}
+
+/* ===== BOTONES ESPECIALES ===== */
+.btn-outline-primary {
+    color: var(--primary-purple);
+    border-color: var(--primary-purple);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background: var(--gradient-purple);
+    border-color: var(--primary-purple);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+}
+
+.btn-outline-secondary {
+    transition: all 0.3s ease;
+}
+
+.btn-outline-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-card, .results-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding: 15px;
+    }
+    
+    .card-body {
+        padding: 20px;
+    }
+    
+    .btn-lg {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== ESTADOS ESPECIALES ===== */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    transform: none !important;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%) !important;
+}
+
+/* ===== FOCUS PERSONALIZADO ===== */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+}
+
+/* ===== SCROLLBAR PERSONALIZADA ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-purple);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-purple-dark);
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
